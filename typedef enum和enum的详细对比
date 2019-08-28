@@ -1,0 +1,44 @@
+枚举（enum）通过一种简单的途径，把一串名字与一串整形值联系在一起。可以代替#define声明
+  枚举一般形式：
+                          enum 可选标签{ 内容.....}可选定义变量定义；
+  其中“”内容.....”是一些标识符的列表，可能有一些整型值赋给它们。
+      enum ASN{MON=7, TUE, WED=10, THU, FRI};    
+1.ASN为是一个标识符，可以看成这个集合的名字，是一个可选项，即是可有可无的项。
+2. 缺省情况下，整型值从0开始。如果对列表中的某个标识符进行赋值，那么紧接其后的那个标识符的值比所赋的值大一，然后类推。
+3.以；结束
+ enum可以通过枚举名加点通过枚举的元素访问枚举数值。例：int i = (int)ASN.MON;枚举值虽然是int类型的，但是也必须进行显示的强制转换。
+只可以把枚举值赋予变量，不可以直接把元素的数值直接赋值给枚举变量，除非强制转换
+enum DAY
+{
+      MON=1, TUE, WED, THU, FRI, SAT, SUN
+};
+enum DAY good_day, bad_day; //变量good_day和bad_day的类型均为枚举型enum DAY
+enum //跟第一个定义不同的是，此处的标号DAY省略，这是允许的。
+{
+    saturday,
+    sunday = 0,
+    monday,
+    tuesday,
+    wednesday,
+    thursday,
+    friday
+} workday; //变量workday的类型为枚举型enum DAY
+
+enum BOOLEAN { false, true } end_flag, match_flag; //定义枚举类型并声明了两个枚举型变量
+  typedef enum用法
+  typedef enum workday
+{
+    saturday,
+    sunday = 0,
+    monday,
+    tuesday,
+    wednesday,
+    thursday,
+    friday
+};
+workday today, tomorrow; //变量today和tomorrow的类型为枚举型workday，即enum workday
+注意：同一个程序中不能定义同名的枚举类型，不同的枚举类型中也不能存在同名的命名常量。
+优点：#define定义的名字在编译时被丢弃，而枚举名字则通常在调试器中可见，可以在调试代码时使用它们。
+ ———————————————— 
+版权声明：本文为CSDN博主「时光漫走」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/asn1111/article/details/77510768
